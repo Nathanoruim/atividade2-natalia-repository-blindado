@@ -1,0 +1,19 @@
+
+name: Operacao Repositorio Blindado
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  verificar-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar chave mestra
+        env:
+          CHAVE_MESTRA: ${{ secrets.CHAVE_MESTRA }}
+        run: |
+          echo "Verificando a chave mestra..."
+          echo "Valor recebido: $CHAVE_MESTRA"
